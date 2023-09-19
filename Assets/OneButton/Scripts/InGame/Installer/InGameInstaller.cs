@@ -3,6 +3,8 @@ using OneButton.InGame.Domain.Repository;
 using OneButton.InGame.Domain.UseCase;
 using OneButton.InGame.Presentation.Controller;
 using OneButton.InGame.Presentation.Presenter;
+using OneButton.InGame.Presentation.View;
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
@@ -11,6 +13,9 @@ namespace OneButton.InGame.Installer
     public sealed class InGameInstaller : LifetimeScope
     {
         [SerializeField] private SlotTable slotTable = default;
+
+        [SerializeField] private MainButtonView mainButtonView = default;
+        [SerializeField] private SlotView slotView = default;
 
         protected override void Configure(IContainerBuilder builder)
         {
@@ -25,10 +30,15 @@ namespace OneButton.InGame.Installer
             builder.Register<StateUseCase>(Lifetime.Scoped);
 
             // Controller
+            builder.Register<SlotState>(Lifetime.Scoped);
             builder.Register<StateController>(Lifetime.Scoped);
 
             // Presenter
             builder.RegisterEntryPoint<StatePresenter>();
+
+            // View
+            builder.RegisterInstance<MainButtonView>(mainButtonView);
+            builder.RegisterInstance<SlotView>(slotView);
         }
     }
 }

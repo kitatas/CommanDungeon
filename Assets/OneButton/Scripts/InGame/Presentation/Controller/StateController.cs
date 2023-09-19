@@ -10,10 +10,11 @@ namespace OneButton.InGame.Presentation.Controller
     {
         private readonly List<BaseState> _states;
 
-        public StateController()
+        public StateController(SlotState slot)
         {
             _states = new List<BaseState>
             {
+                slot,
             };
         }
 

@@ -3,6 +3,7 @@ namespace OneButton.InGame
     public enum GameState
     {
         None,
+        Slot,
     }
 
     public enum PatternType
