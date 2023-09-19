@@ -8,11 +8,13 @@ namespace OneButton.InGame.Presentation.Controller
     {
         private readonly PlayerView _playerView;
         private readonly SlotView _slotView;
+        private readonly StepView _stepView;
 
-        public MoveState(PlayerView playerView, SlotView slotView)
+        public MoveState(PlayerView playerView, SlotView slotView, StepView stepView)
         {
             _playerView = playerView;
             _slotView = slotView;
+            _stepView = stepView;
         }
 
         public override GameState state => GameState.Move;
@@ -30,6 +32,11 @@ namespace OneButton.InGame.Presentation.Controller
                 foreach (var direction in directions)
                 {
                     await _playerView.MoveAsync(direction, token);
+
+                    // 階段に到達
+                    if (_stepView.IsGoal(_playerView.currentPosition))
+                    {
+                    }
                 }
             }
 

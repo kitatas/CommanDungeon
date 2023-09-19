@@ -13,9 +13,11 @@ namespace OneButton.InGame.Presentation.View
         [SerializeField] private Animator animator = default;
         private static readonly int _isMove = Animator.StringToHash("IsMove");
 
+        public Vector3 currentPosition => transform.position;
+
         public async UniTask MoveAsync(Vector3 direction, CancellationToken token)
         {
-            var nextPosition = transform.position + direction;
+            var nextPosition = currentPosition + direction;
             if (nextPosition.x.IsBetween(PlayerConfig.MIN_X, PlayerConfig.MAX_X) &&
                 nextPosition.y.IsBetween(PlayerConfig.MIN_Y, PlayerConfig.MAX_Y))
             {
@@ -51,7 +53,7 @@ namespace OneButton.InGame.Presentation.View
 
         private Tween Vibrate()
         {
-            var currentX = transform.position.x;
+            var currentX = currentPosition.x;
             return DOTween.Sequence()
                 .Append(transform
                     .DOMoveX(currentX - 0.1f, PlayerConfig.VIBRATE_TIME))

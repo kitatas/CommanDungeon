@@ -15,8 +15,9 @@ namespace OneButton.InGame.Installer
         [SerializeField] private SlotTable slotTable = default;
 
         [SerializeField] private MainButtonView mainButtonView = default;
-        [SerializeField] private SlotView slotView = default;
         [SerializeField] private PlayerView playerView = default;
+        [SerializeField] private SlotView slotView = default;
+        [SerializeField] private StepView stepView = default;
 
         protected override void Configure(IContainerBuilder builder)
         {
@@ -33,6 +34,7 @@ namespace OneButton.InGame.Installer
             // Controller
             builder.Register<MoveState>(Lifetime.Scoped);
             builder.Register<SlotState>(Lifetime.Scoped);
+            builder.Register<StepState>(Lifetime.Scoped);
             builder.Register<StateController>(Lifetime.Scoped);
 
             // Presenter
@@ -40,8 +42,9 @@ namespace OneButton.InGame.Installer
 
             // View
             builder.RegisterInstance<MainButtonView>(mainButtonView);
-            builder.RegisterInstance<SlotView>(slotView);
             builder.RegisterInstance<PlayerView>(playerView);
+            builder.RegisterInstance<SlotView>(slotView);
+            builder.RegisterInstance<StepView>(stepView);
         }
     }
 }
