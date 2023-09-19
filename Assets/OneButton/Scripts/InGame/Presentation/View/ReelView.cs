@@ -14,6 +14,8 @@ namespace OneButton.InGame.Presentation.View
         private int _index;
         private bool _isRoll;
 
+        public Data.DataStore.PatternData currentPattern { get; private set; }
+
         public void Init(List<Data.DataStore.PatternData> patterns)
         {
             _patterns = patterns;
@@ -36,7 +38,8 @@ namespace OneButton.InGame.Presentation.View
             {
                 if (_isRoll)
                 {
-                    pattern.sprite = _patterns[_index].image;
+                    currentPattern = _patterns[_index];
+                    pattern.sprite = currentPattern.image;
                     _index.RepeatIncrement(0, _patterns.GetLastIndex());
                     yield return interval;
                 }

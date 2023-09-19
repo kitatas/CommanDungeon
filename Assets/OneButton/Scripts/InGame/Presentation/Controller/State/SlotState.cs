@@ -46,7 +46,7 @@ namespace OneButton.InGame.Presentation.Controller
 
             await _mainButtonView.PushAsync(token);
 
-            return GameState.None;
+            return GameState.Move;
         }
     }
 }

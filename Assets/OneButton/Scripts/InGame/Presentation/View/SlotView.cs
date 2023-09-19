@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using OneButton.Common.Application;
 using UniEx;
 using UnityEngine;
@@ -23,6 +24,11 @@ namespace OneButton.InGame.Presentation.View
         public void StopReel(int index)
         {
             GetReelView(index).SetRoll(false);
+        }
+
+        public Data.DataStore.PatternData GetReelPattern(int index)
+        {
+            return GetReelView(index).currentPattern;
         }
 
         private ReelView GetReelView(int index)
