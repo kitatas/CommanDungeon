@@ -15,6 +15,7 @@ namespace OneButton.InGame.Installer
         [SerializeField] private SlotTable slotTable = default;
 
         [SerializeField] private MainButtonView mainButtonView = default;
+        [SerializeField] private HpView hpView = default;
         [SerializeField] private PlayerView playerView = default;
         [SerializeField] private SlotView slotView = default;
         [SerializeField] private StageView stageView = default;
@@ -30,6 +31,7 @@ namespace OneButton.InGame.Installer
             builder.Register<SlotRepository>(Lifetime.Scoped);
 
             // UseCase
+            builder.Register<HpUseCase>(Lifetime.Scoped);
             builder.Register<SlotUseCase>(Lifetime.Scoped);
             builder.Register<StateUseCase>(Lifetime.Scoped);
             builder.Register<StepCountUseCase>(Lifetime.Scoped);
@@ -41,11 +43,13 @@ namespace OneButton.InGame.Installer
             builder.Register<StateController>(Lifetime.Scoped);
 
             // Presenter
+            builder.RegisterEntryPoint<HpPresenter>();
             builder.RegisterEntryPoint<StatePresenter>();
             builder.RegisterEntryPoint<StepCountPresenter>();
 
             // View
             builder.RegisterInstance<MainButtonView>(mainButtonView);
+            builder.RegisterInstance<HpView>(hpView);
             builder.RegisterInstance<PlayerView>(playerView);
             builder.RegisterInstance<SlotView>(slotView);
             builder.RegisterInstance<StageView>(stageView);

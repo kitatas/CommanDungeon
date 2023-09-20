@@ -1,17 +1,20 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using OneButton.InGame.Domain.UseCase;
 using OneButton.InGame.Presentation.View;
 
 namespace OneButton.InGame.Presentation.Controller
 {
     public sealed class MoveState : BaseState
     {
+        private readonly HpUseCase _hpUseCase;
         private readonly PlayerView _playerView;
         private readonly SlotView _slotView;
         private readonly StepView _stepView;
 
-        public MoveState(PlayerView playerView, SlotView slotView, StepView stepView)
+        public MoveState(HpUseCase hpUseCase, PlayerView playerView, SlotView slotView, StepView stepView)
         {
+            _hpUseCase = hpUseCase;
             _playerView = playerView;
             _slotView = slotView;
             _stepView = stepView;
@@ -21,6 +24,7 @@ namespace OneButton.InGame.Presentation.Controller
 
         public override async UniTask InitAsync(CancellationToken token)
         {
+            _hpUseCase.Increase(PlayerConfig.MAX_HP);
             await UniTask.Yield(token);
         }
 
@@ -38,6 +42,14 @@ namespace OneButton.InGame.Presentation.Controller
                     {
                         return GameState.Step;
                     }
+                }
+
+                // 1回行動のHP減少
+                _hpUseCase.Decrease(1);
+                if (_hpUseCase.IsDead())
+                {
+                    // TODO: ゲーム終了
+                    return GameState.None;
                 }
             }
 

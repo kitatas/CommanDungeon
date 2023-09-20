@@ -27,6 +27,10 @@ namespace OneButton.InGame
         public const float MAX_X = 3.6625f;
         public const float MIN_Y = -1.35f;
         public const float MAX_Y = 3.85f;
+
+        // HP
+        public const int MIN_HP = 0;
+        public const int MAX_HP = 15;
     }
 
     public sealed class SlotConfig
