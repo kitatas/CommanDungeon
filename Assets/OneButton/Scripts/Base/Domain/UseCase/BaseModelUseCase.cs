@@ -2,7 +2,7 @@ using UniRx;
 
 namespace OneButton.Base.Domain.UseCase
 {
-    public abstract class BaseModelUseCase<T> where T : new()
+    public abstract class BaseModelUseCase<T>
     {
         private readonly ReactiveProperty<T> _property;
 

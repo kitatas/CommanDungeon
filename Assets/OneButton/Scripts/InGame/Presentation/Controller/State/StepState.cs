@@ -1,5 +1,6 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using OneButton.InGame.Domain.UseCase;
 using OneButton.InGame.Presentation.View;
 using UnityEngine;
 
@@ -7,11 +8,13 @@ namespace OneButton.InGame.Presentation.Controller
 {
     public sealed class StepState : BaseState
     {
+        private readonly StepCountUseCase _stepCountUseCase;
         private readonly StageView _stageView;
         private readonly StepView _stepView;
 
-        public StepState(StageView stageView, StepView stepView)
+        public StepState(StepCountUseCase stepCountUseCase, StageView stageView, StepView stepView)
         {
+            _stepCountUseCase = stepCountUseCase;
             _stageView = stageView;
             _stepView = stepView;
         }
@@ -29,6 +32,8 @@ namespace OneButton.InGame.Presentation.Controller
                 _stageView.SwitchAsync(StageConfig.TWEEN_TIME, token),
                 _stepView.HideAsync(StageConfig.TWEEN_TIME, token)
             );
+
+            _stepCountUseCase.Increment();
 
             // TODO: ステージ内アイテムのポップ
             // TODO: 階段位置の変更
