@@ -8,6 +8,7 @@ namespace OneButton.InGame.Presentation.View
 {
     public sealed class ReelView : MonoBehaviour
     {
+        [SerializeField] private Image frame = default;
         [SerializeField] private Image pattern = default;
 
         private List<Data.DataStore.PatternData> _patterns;
@@ -15,6 +16,7 @@ namespace OneButton.InGame.Presentation.View
         private bool _isRoll;
 
         public Data.DataStore.PatternData currentPattern { get; private set; }
+        public Vector3 localPosition => transform.localPosition;
 
         public void Init(List<Data.DataStore.PatternData> patterns)
         {
@@ -23,6 +25,13 @@ namespace OneButton.InGame.Presentation.View
             SetRoll(false);
 
             StartCoroutine(TickCor());
+        }
+
+        public void SetFocus(bool value)
+        {
+            var a = value ? 1.0f : 0.5f;
+            frame.SetColorA(a);
+            pattern.SetColorA(a);
         }
 
         public void SetRoll(bool value)

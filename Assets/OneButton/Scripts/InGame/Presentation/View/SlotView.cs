@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
 using OneButton.Common.Application;
 using UniEx;
 using UnityEngine;
@@ -14,6 +13,14 @@ namespace OneButton.InGame.Presentation.View
         public void Init(int index, List<Data.DataStore.PatternData> patterns)
         {
             GetReelView(index).Init(patterns);
+        }
+
+        public void SetFocus(int index)
+        {
+            for (int i = 0; i < reelViews.Count; i++)
+            {
+                GetReelView(i).SetFocus(i == index);
+            }
         }
 
         public void Refresh()

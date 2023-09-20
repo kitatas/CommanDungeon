@@ -32,6 +32,7 @@ namespace OneButton.InGame.Presentation.Controller
         {
             for (int i = 0; i < SlotConfig.REEL_COUNT; i++)
             {
+                _slotView.SetFocus(i);
                 var directions = _slotView.GetReelPattern(i).move.ToVector3List();
                 foreach (var direction in directions)
                 {

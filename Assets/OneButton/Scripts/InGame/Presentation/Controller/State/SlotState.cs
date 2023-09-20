@@ -40,6 +40,7 @@ namespace OneButton.InGame.Presentation.Controller
             // リール停止 * 3
             for (int i = 0; i < SlotConfig.REEL_COUNT; i++)
             {
+                _slotView.SetFocus(i);
                 await _mainButtonView.PushAsync(token);
                 _slotView.StopReel(i);
             }
