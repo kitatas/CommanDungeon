@@ -38,4 +38,13 @@ namespace OneButton.InGame
         public const int REEL_COUNT = 3;
         public const float PATTERN_INTERVAL = 0.1f;
     }
+
+    public sealed class ScoreConfig
+    {
+        public const float SHOW_TIME = 0.5f;
+
+        public const int FLOOR_RATE = 10000;
+        public const int COIN_RATE = 100;
+        public const int SLOT_MATCH_RATE = 1000;
+    }
 }

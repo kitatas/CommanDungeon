@@ -36,7 +36,7 @@ namespace OneButton.InGame.Presentation.Controller
             // TODO: ランキング送信
             await UniTask.Yield(token);
 
-            return GameState.None;
+            return GameState.Result;
         }
     }
 }

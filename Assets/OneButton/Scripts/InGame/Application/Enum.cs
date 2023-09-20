@@ -7,6 +7,7 @@ namespace OneButton.InGame
         Move,
         Step,
         Finish,
+        Result,
     }
 
     public enum PatternType

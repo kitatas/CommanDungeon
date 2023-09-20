@@ -18,6 +18,7 @@ namespace OneButton.InGame.Installer
         [SerializeField] private CoinView coinView = default;
         [SerializeField] private HpView hpView = default;
         [SerializeField] private PlayerView playerView = default;
+        [SerializeField] private ResultView resultView = default;
         [SerializeField] private SlotView slotView = default;
         [SerializeField] private StageView stageView = default;
         [SerializeField] private StepCountView stepCountView = default;
@@ -43,6 +44,7 @@ namespace OneButton.InGame.Installer
             // Controller
             builder.Register<FinishState>(Lifetime.Scoped);
             builder.Register<MoveState>(Lifetime.Scoped);
+            builder.Register<ResultState>(Lifetime.Scoped);
             builder.Register<SlotState>(Lifetime.Scoped);
             builder.Register<StepState>(Lifetime.Scoped);
             builder.Register<StateController>(Lifetime.Scoped);
@@ -58,6 +60,7 @@ namespace OneButton.InGame.Installer
             builder.RegisterInstance<CoinView>(coinView);
             builder.RegisterInstance<HpView>(hpView);
             builder.RegisterInstance<PlayerView>(playerView);
+            builder.RegisterInstance<ResultView>(resultView);
             builder.RegisterInstance<SlotView>(slotView);
             builder.RegisterInstance<StageView>(stageView);
             builder.RegisterInstance<StepCountView>(stepCountView);
