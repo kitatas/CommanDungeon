@@ -17,5 +17,7 @@ namespace OneButton.Base.Domain.UseCase
         {
             _property.Value = value;
         }
+
+        public T currentValue => _property.Value;
     }
 }

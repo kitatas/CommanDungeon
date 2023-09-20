@@ -6,7 +6,7 @@ namespace OneButton.InGame.Domain.UseCase
     {
         public void Increase(int value)
         {
-            Set(property.Value + value);
+            Set(currentValue + value);
         }
     }
 }
