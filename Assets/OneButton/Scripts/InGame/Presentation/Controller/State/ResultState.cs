@@ -41,8 +41,7 @@ namespace OneButton.InGame.Presentation.Controller
 
             await _resultView.TweenLastScoreAsync(_scoreUseCase.score, ScoreConfig.SHOW_TIME, token);
 
-            // ランキング表示
-            return GameState.None;
+            return GameState.Ranking;
         }
     }
 }

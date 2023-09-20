@@ -44,6 +44,7 @@ namespace OneButton.InGame.Installer
             // Controller
             builder.Register<FinishState>(Lifetime.Scoped);
             builder.Register<MoveState>(Lifetime.Scoped);
+            builder.Register<RankingState>(Lifetime.Scoped);
             builder.Register<ResultState>(Lifetime.Scoped);
             builder.Register<SlotState>(Lifetime.Scoped);
             builder.Register<StepState>(Lifetime.Scoped);
