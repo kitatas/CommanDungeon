@@ -21,6 +21,17 @@ namespace OneButton.InGame.Presentation.View
                 playerPosition.y.IsBetween(position.y - 0.0f, position.y + 0.3f);
         }
 
+        public async UniTask ShowAsync(Vector3 position, float duration, CancellationToken token)
+        {
+            transform.position = position;
+
+            await spriteRenderer
+                .DOFade(1.0f, duration)
+                .SetEase(Ease.Linear)
+                .SetLink(gameObject)
+                .WithCancellation(token);
+        }
+
         public async UniTask HideAsync(float duration, CancellationToken token)
         {
             await (

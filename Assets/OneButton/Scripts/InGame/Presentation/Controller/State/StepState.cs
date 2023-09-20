@@ -30,6 +30,11 @@ namespace OneButton.InGame.Presentation.Controller
                 _stepView.HideAsync(StageConfig.TWEEN_TIME, token)
             );
 
+            // TODO: ステージ内アイテムのポップ
+            // TODO: 階段位置の変更
+            var position = new Vector3(0.5f, 0.5f, 0.0f);
+            await _stepView.ShowAsync(position, StageConfig.TWEEN_TIME, token);
+
             return GameState.Slot;
         }
     }
