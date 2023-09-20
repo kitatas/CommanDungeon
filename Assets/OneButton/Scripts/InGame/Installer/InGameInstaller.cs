@@ -37,6 +37,7 @@ namespace OneButton.InGame.Installer
             builder.Register<StepCountUseCase>(Lifetime.Scoped);
 
             // Controller
+            builder.Register<FinishState>(Lifetime.Scoped);
             builder.Register<MoveState>(Lifetime.Scoped);
             builder.Register<SlotState>(Lifetime.Scoped);
             builder.Register<StepState>(Lifetime.Scoped);

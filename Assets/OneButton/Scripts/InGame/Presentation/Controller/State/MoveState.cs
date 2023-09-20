@@ -49,8 +49,7 @@ namespace OneButton.InGame.Presentation.Controller
                 _hpUseCase.Decrease(1);
                 if (_hpUseCase.IsDead())
                 {
-                    // TODO: ゲーム終了
-                    return GameState.None;
+                    return GameState.Finish;
                 }
             }
 
