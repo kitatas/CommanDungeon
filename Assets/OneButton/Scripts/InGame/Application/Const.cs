@@ -7,7 +7,13 @@ namespace OneButton.InGame
 
     public sealed class StageConfig
     {
+        public const float HIDE_STEP_HEIGHT = 9.0f;
 
+        public const float SHOW_HEIGHT = 0.5f;
+        public const float HIDE_HEIGHT_MIN = -10.5f;
+        public const float HIDE_HEIGHT_MAX = HIDE_STEP_HEIGHT + 0.5f;
+
+        public const float TWEEN_TIME = 0.5f;
     }
 
     public sealed class PlayerConfig

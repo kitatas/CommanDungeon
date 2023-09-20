@@ -36,6 +36,7 @@ namespace OneButton.InGame.Presentation.Controller
                     // 階段に到達
                     if (_stepView.IsGoal(_playerView.currentPosition))
                     {
+                        return GameState.Step;
                     }
                 }
             }
