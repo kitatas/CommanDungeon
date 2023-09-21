@@ -14,11 +14,11 @@ namespace OneButton.InGame.Domain.UseCase
             _slotRepository = slotRepository;
         }
 
-        public Data.DataStore.PatternTable GetPatternData(int index)
+        public Data.DataStore.SlotData GetSlotData()
         {
             var difficulty = _stepCountEntity.GetDifficulty();
             var data = _slotRepository.FindByDifficulty(difficulty);
-            return data.data[index];
+            return data;
         }
     }
 }

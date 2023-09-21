@@ -10,9 +10,17 @@ namespace OneButton.InGame.Presentation.View
     {
         [SerializeField] private List<ReelView> reelViews = default;
 
-        public void Init(int index, List<Data.DataStore.PatternData> patterns)
+        public void Init()
         {
-            GetReelView(index).Init(patterns);
+            reelViews.Each(x => x.Init());
+        }
+
+        public void SetUp(List<Data.DataStore.PatternTable> patterns)
+        {
+            for (int i = 0; i < reelViews.Count; i++)
+            {
+                GetReelView(i).UpdatePatterns(patterns[i].data);
+            }
         }
 
         public void SetFocus(int index)

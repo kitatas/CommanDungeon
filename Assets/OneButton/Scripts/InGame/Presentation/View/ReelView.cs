@@ -18,13 +18,17 @@ namespace OneButton.InGame.Presentation.View
         public Data.DataStore.PatternData currentPattern { get; private set; }
         public Vector3 localPosition => transform.localPosition;
 
-        public void Init(List<Data.DataStore.PatternData> patterns)
+        public void Init()
         {
-            _patterns = patterns;
             _index = 0;
             SetRoll(false);
 
             StartCoroutine(TickCor());
+        }
+
+        public void UpdatePatterns(List<Data.DataStore.PatternData> patterns)
+        {
+            _patterns = patterns;
         }
 
         public void SetFocus(bool value)

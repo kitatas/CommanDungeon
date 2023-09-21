@@ -2,19 +2,22 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using OneButton.InGame.Domain.UseCase;
 using OneButton.InGame.Presentation.View;
+using UniRx;
 
 namespace OneButton.InGame.Presentation.Controller
 {
     public sealed class SlotState : BaseState
     {
         private readonly SlotUseCase _slotUseCase;
-
+        private readonly StepCountUseCase _stepCountUseCase;
         private readonly MainButtonView _mainButtonView;
         private readonly SlotView _slotView;
 
-        public SlotState(SlotUseCase slotUseCase, MainButtonView mainButtonView, SlotView slotView)
+        public SlotState(SlotUseCase slotUseCase, StepCountUseCase stepCountUseCase, MainButtonView mainButtonView,
+            SlotView slotView)
         {
             _slotUseCase = slotUseCase;
+            _stepCountUseCase = stepCountUseCase;
             _mainButtonView = mainButtonView;
             _slotView = slotView;
         }
@@ -23,11 +26,14 @@ namespace OneButton.InGame.Presentation.Controller
 
         public override async UniTask InitAsync(CancellationToken token)
         {
-            for (int i = 0; i < SlotConfig.REEL_COUNT; i++)
-            {
-                var reelData = _slotUseCase.GetPatternData(i);
-                _slotView.Init(i, reelData.data);
-            }
+            _slotView.Init();
+            _stepCountUseCase.difficulty
+                .Subscribe(_ =>
+                {
+                    var slotData = _slotUseCase.GetSlotData();
+                    _slotView.SetUp(slotData.data);
+                })
+                .AddTo(token);
 
             await UniTask.Yield(token);
         }
@@ -44,8 +50,6 @@ namespace OneButton.InGame.Presentation.Controller
                 await _mainButtonView.PushAsync(token);
                 _slotView.StopReel(i);
             }
-
-            await _mainButtonView.PushAsync(token);
 
             return GameState.Move;
         }
