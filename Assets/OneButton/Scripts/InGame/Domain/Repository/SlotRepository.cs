@@ -1,5 +1,5 @@
 using System;
-using OneButton.Common.Application;
+using OneButton.Common;
 using OneButton.InGame.Data.DataStore;
 
 namespace OneButton.InGame.Domain.Repository

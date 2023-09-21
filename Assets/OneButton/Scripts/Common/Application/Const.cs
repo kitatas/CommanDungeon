@@ -1,4 +1,4 @@
-namespace OneButton.Common.Application
+namespace OneButton.Common
 {
     public sealed class ExceptionConfig
     {
