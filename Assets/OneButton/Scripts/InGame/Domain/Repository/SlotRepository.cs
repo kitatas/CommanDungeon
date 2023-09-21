@@ -1,4 +1,5 @@
-using System.Collections.Generic;
+using System;
+using OneButton.Common.Application;
 using OneButton.InGame.Data.DataStore;
 
 namespace OneButton.InGame.Domain.Repository
@@ -12,9 +13,15 @@ namespace OneButton.InGame.Domain.Repository
             _slotTable = slotTable;
         }
 
-        public List<PatternTable> GetPatternTable()
+        public SlotData FindByDifficulty(Difficulty difficulty)
         {
-            return _slotTable.data;
+            var data = _slotTable.data.Find(x => x.difficulty == difficulty);
+            if (data == null || data.data.Count != SlotConfig.REEL_COUNT)
+            {
+                throw new Exception(ExceptionConfig.NOT_FOUND_REEL_DATA);
+            }
+
+            return data;
         }
     }
 }

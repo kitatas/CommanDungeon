@@ -1,4 +1,5 @@
 using OneButton.InGame.Data.DataStore;
+using OneButton.InGame.Data.Entity;
 using OneButton.InGame.Domain.Repository;
 using OneButton.InGame.Domain.UseCase;
 using OneButton.InGame.Presentation.Controller;
@@ -28,6 +29,9 @@ namespace OneButton.InGame.Installer
         {
             // DataStore
             builder.RegisterInstance<SlotTable>(slotTable);
+
+            // Entity
+            builder.Register<StepCountEntity>(Lifetime.Scoped);
 
             // Repository
             builder.Register<SlotRepository>(Lifetime.Scoped);

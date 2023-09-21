@@ -37,6 +37,11 @@ namespace OneButton.InGame
     {
         public const int REEL_COUNT = 3;
         public const float PATTERN_INTERVAL = 0.1f;
+
+        public const int THRESHOLD_TITLE = 0;
+        public const int THRESHOLD_EASY = 5;
+        public const int THRESHOLD_NORMAL = 10;
+        public const int THRESHOLD_HARD = 15;
     }
 
     public sealed class ScoreConfig

@@ -1,19 +1,24 @@
+using OneButton.InGame.Data.Entity;
 using OneButton.InGame.Domain.Repository;
 
 namespace OneButton.InGame.Domain.UseCase
 {
     public sealed class SlotUseCase
     {
+        private readonly StepCountEntity _stepCountEntity;
         private readonly SlotRepository _slotRepository;
 
-        public SlotUseCase(SlotRepository slotRepository)
+        public SlotUseCase(StepCountEntity stepCountEntity, SlotRepository slotRepository)
         {
+            _stepCountEntity = stepCountEntity;
             _slotRepository = slotRepository;
         }
 
         public Data.DataStore.PatternTable GetPatternData(int index)
         {
-            return _slotRepository.GetPatternTable()[index];
+            var difficulty = _stepCountEntity.GetDifficulty();
+            var data = _slotRepository.FindByDifficulty(difficulty);
+            return data.data[index];
         }
     }
 }

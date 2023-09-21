@@ -30,4 +30,13 @@ namespace OneButton.InGame
         DoubleLeft,
         DoubleRight,
     }
+
+    public enum Difficulty
+    {
+        None,
+        Title,
+        Easy,
+        Normal,
+        Hard,
+    }
 }
