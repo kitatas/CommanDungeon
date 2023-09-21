@@ -7,16 +7,17 @@ namespace OneButton.InGame.Presentation.View
 {
     public sealed class HpView : BaseView<int>
     {
-        [SerializeField] private List<Image> hpImages;
+        [SerializeField] private List<Image> hpImages = default;
+        [SerializeField] private Sprite full = default;
+        [SerializeField] private Sprite empty = default;
 
         public override void Render(int value)
         {
             for (int i = 0; i < hpImages.Count; i++)
             {
-                // TODO: 画像の切り替え
-                hpImages[i].color = i + 1 <= value
-                    ? Color.white
-                    : Color.gray;
+                hpImages[i].sprite = i + 1 <= value
+                    ? full
+                    : empty;
             }
         }
     }
