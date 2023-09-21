@@ -34,6 +34,14 @@ namespace OneButton.InGame.Presentation.Controller
             {
                 _slotView.SetFocus(i);
                 var patternData = _slotView.GetReelPattern(i);
+
+                // ハート付きのコマンドはハート消費なしで行動
+                if (patternData.pattern != PatternType.Heart)
+                {
+                    // 1回行動のハート減少
+                    _hpUseCase.Decrease(1);
+                }
+
                 var directions = patternData.move.ToVector3List();
                 foreach (var direction in directions)
                 {
@@ -42,19 +50,17 @@ namespace OneButton.InGame.Presentation.Controller
                     // 階段に到達
                     if (_stepView.IsGoal(_playerView.currentPosition))
                     {
+                        _slotView.SetFocus(-1);
+
+                        // 階段到達で3回復
+                        _hpUseCase.Increase(StageConfig.REACH_STEP_BONUS);
                         return GameState.Step;
                     }
                 }
 
-                // ハート付きのコマンドはハート消費なしで行動
-                if (patternData.pattern != PatternType.Heart)
+                if (_hpUseCase.IsDead())
                 {
-                    // 1回行動のHP減少
-                    _hpUseCase.Decrease(1);
-                    if (_hpUseCase.IsDead())
-                    {
-                        return GameState.Finish;
-                    }
+                    return GameState.Finish;
                 }
             }
 
