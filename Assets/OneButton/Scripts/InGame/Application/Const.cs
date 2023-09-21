@@ -14,6 +14,8 @@ namespace OneButton.InGame
         public const float HIDE_HEIGHT_MAX = HIDE_STEP_HEIGHT + 0.5f;
 
         public const float TWEEN_TIME = 0.5f;
+
+        public const int REACH_STEP_BONUS = 3;
     }
 
     public sealed class PlayerConfig

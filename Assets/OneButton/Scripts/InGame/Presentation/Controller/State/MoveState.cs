@@ -33,7 +33,8 @@ namespace OneButton.InGame.Presentation.Controller
             for (int i = 0; i < SlotConfig.REEL_COUNT; i++)
             {
                 _slotView.SetFocus(i);
-                var directions = _slotView.GetReelPattern(i).move.ToVector3List();
+                var patternData = _slotView.GetReelPattern(i);
+                var directions = patternData.move.ToVector3List();
                 foreach (var direction in directions)
                 {
                     await _playerView.MoveAsync(direction, token);
@@ -45,11 +46,15 @@ namespace OneButton.InGame.Presentation.Controller
                     }
                 }
 
-                // 1回行動のHP減少
-                _hpUseCase.Decrease(1);
-                if (_hpUseCase.IsDead())
+                // ハート付きのコマンドはハート消費なしで行動
+                if (patternData.pattern != PatternType.Heart)
                 {
-                    return GameState.Finish;
+                    // 1回行動のHP減少
+                    _hpUseCase.Decrease(1);
+                    if (_hpUseCase.IsDead())
+                    {
+                        return GameState.Finish;
+                    }
                 }
             }
 
