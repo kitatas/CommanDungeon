@@ -32,4 +32,9 @@ namespace OneButton.Common
     {
         public const float INIT_VOLUME = 0.5f;
     }
+
+    public sealed class UrlConfig
+    {
+        public const string APP = "";
+    }
 }

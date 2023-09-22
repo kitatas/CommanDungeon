@@ -5,5 +5,6 @@ namespace OneButton.Boot
         None,
         Load,
         Login,
+        Check,
     }
 }

@@ -9,13 +9,14 @@ namespace OneButton.Base.Presentation.View
     {
         [SerializeField] private Button button = default;
 
+        public Action pushed;
+
         public void Init()
         {
-            push.Subscribe(_ =>
-                {
-                    // play animation
-                    // play se
-                })
+            // play animation
+            // play se
+
+            push.Subscribe(_ => pushed?.Invoke())
                 .AddTo(this);
         }
 
