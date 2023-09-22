@@ -22,4 +22,12 @@ namespace OneButton.Common
         Reboot,
         Crash,
     }
+
+    public enum BgmType
+    {
+        None,
+        Title,
+        Main,
+        Result,
+    }
 }
