@@ -36,9 +36,9 @@ namespace OneButton.InGame.Presentation.Controller
             _stepCountUseCase.Increment();
 
             // TODO: ステージ内アイテムのポップ
-            // TODO: 階段位置の変更
-            var position = new Vector3(0.5f, 0.5f, 0.0f);
-            await _stepView.ShowAsync(position, StageConfig.TWEEN_TIME, token);
+            // 次フロアの階段位置抽選
+            _stepView.LotNextPosition();
+            await _stepView.ShowAsync(StageConfig.TWEEN_TIME, token);
 
             return GameState.Slot;
         }
