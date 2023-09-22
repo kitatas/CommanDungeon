@@ -25,5 +25,16 @@ namespace OneButton.InGame.Presentation.View
                 .SetEase(Ease.Linear)
                 .SetLink(gameObject);
         }
+
+        public void HideTween(float duration)
+        {
+            DOTween.Sequence()
+                .Append(transform
+                    .DOMoveY(transform.position.y + StageConfig.HIDE_STEP_HEIGHT, duration)
+                    .SetEase(Ease.Linear)
+                    .SetLink(gameObject))
+                .Join(Hide(duration))
+                .OnComplete(() => Destroy(gameObject));
+        }
     }
 }

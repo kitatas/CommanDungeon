@@ -33,6 +33,7 @@ namespace OneButton.InGame.Presentation.Controller
 
         public override async UniTask<GameState> TickAsync(CancellationToken token)
         {
+            _floorItemView.HideAll(StageConfig.TWEEN_TIME);
             await (
                 _stageView.SwitchAsync(StageConfig.TWEEN_TIME, token),
                 _stepView.HideAsync(StageConfig.TWEEN_TIME, token)

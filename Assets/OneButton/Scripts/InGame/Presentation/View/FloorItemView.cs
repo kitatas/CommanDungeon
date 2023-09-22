@@ -61,5 +61,16 @@ namespace OneButton.InGame.Presentation.View
                 }
             });
         }
+
+        public void HideAll(float duration)
+        {
+            _currentItemViews.Each(x =>
+            {
+                if (x != null)
+                {
+                    x.HideTween(duration);
+                }
+            });
+        }
     }
 }
