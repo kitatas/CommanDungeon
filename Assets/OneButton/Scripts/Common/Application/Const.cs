@@ -6,6 +6,12 @@ namespace OneButton.Common
         public const string NOT_FOUND_REEL = "NOT_FOUND_REEL";
         public const string NOT_FOUND_MOVE_TYPE = "NOT_FOUND_MOVE_TYPE";
         public const string NOT_FOUND_ITEM_TYPE = "NOT_FOUND_ITEM_TYPE";
+        public const string NOT_FOUND_LOAD_TYPE = "NOT_FOUND_LOAD_TYPE";
         public const string NOT_FOUND_REEL_DATA = "NOT_FOUND_REEL_DATA";
+    }
+
+    public sealed class SceneConfig
+    {
+        public const float FADE_TIME = 0.5f;
     }
 }
