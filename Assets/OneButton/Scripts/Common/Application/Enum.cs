@@ -30,4 +30,10 @@ namespace OneButton.Common
         Main,
         Result,
     }
+
+    public enum SeType
+    {
+        None,
+        Decision,
+    }
 }

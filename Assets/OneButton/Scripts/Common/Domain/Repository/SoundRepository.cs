@@ -6,10 +6,12 @@ namespace OneButton.Common.Domain.Repository
     public sealed class SoundRepository
     {
         private readonly BgmTable _bgmTable;
+        private readonly SeTable _seTable;
 
-        public SoundRepository(BgmTable bgmTable)
+        public SoundRepository(BgmTable bgmTable, SeTable seTable)
         {
             _bgmTable = bgmTable;
+            _seTable = seTable;
         }
 
         public BgmData FindBgm(BgmType type)
@@ -18,6 +20,17 @@ namespace OneButton.Common.Domain.Repository
             if (data == null || data.clip == null)
             {
                 throw new Exception(ExceptionConfig.NOT_FOUND_BGM);
+            }
+
+            return data;
+        }
+
+        public SeData FindSe(SeType type)
+        {
+            var data = _seTable.data.Find(x => x.type == type);
+            if (data == null || data.clip == null)
+            {
+                throw new Exception(ExceptionConfig.NOT_FOUND_SE);
             }
 
             return data;
