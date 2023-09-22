@@ -14,4 +14,9 @@ namespace OneButton.Common
     {
         public const float FADE_TIME = 0.5f;
     }
+
+    public sealed class UiConfig
+    {
+        public const float POPUP_TIME = 0.25f;
+    }
 }
