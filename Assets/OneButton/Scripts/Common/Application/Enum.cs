@@ -13,4 +13,13 @@ namespace OneButton.Common
         Direct,
         Fade,
     }
+
+    public enum ExceptionType
+    {
+        None,
+        Cancel,
+        Retry,
+        Reboot,
+        Crash,
+    }
 }
