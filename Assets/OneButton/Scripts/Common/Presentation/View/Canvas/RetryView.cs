@@ -9,7 +9,7 @@ namespace OneButton.Common.Presentation.View
     public sealed class RetryView : BaseCanvasGroupView
     {
         [SerializeField] private TextMeshProUGUI messageText = default;
-        [SerializeField] private ExceptionButtonView exceptionButton = default;
+        [SerializeField] private DecisionButtonView decisionButton = default;
 
         public async UniTask ShowAndHideAsync(string message, float duration, CancellationToken token)
         {
@@ -17,7 +17,7 @@ namespace OneButton.Common.Presentation.View
 
             await ShowAsync(duration, token);
 
-            await exceptionButton.PushAsync(token);
+            await decisionButton.PushAsync(token);
 
             await HideAsync(duration, token);
         }

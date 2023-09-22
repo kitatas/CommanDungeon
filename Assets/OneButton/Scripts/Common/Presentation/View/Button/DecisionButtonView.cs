@@ -4,7 +4,7 @@ using OneButton.Base.Presentation.View;
 
 namespace OneButton.Common.Presentation.View
 {
-    public sealed class ExceptionButtonView : BaseButtonView
+    public sealed class DecisionButtonView : BaseButtonView
     {
         public async UniTask PushAsync(CancellationToken token)
         {
