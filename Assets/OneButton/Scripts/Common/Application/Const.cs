@@ -20,4 +20,14 @@ namespace OneButton.Common
     {
         public const float POPUP_TIME = 0.25f;
     }
+
+    public sealed class SaveConfig
+    {
+        public const string ES3_KEY = "";
+    }
+
+    public sealed class SoundConfig
+    {
+        public const float INIT_VOLUME = 0.5f;
+    }
 }
