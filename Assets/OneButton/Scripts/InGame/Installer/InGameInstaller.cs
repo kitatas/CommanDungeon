@@ -20,6 +20,7 @@ namespace OneButton.InGame.Installer
         [SerializeField] private FloorItemView floorItemView = default;
         [SerializeField] private HpView hpView = default;
         [SerializeField] private PlayerView playerView = default;
+        [SerializeField] private RankingView rankingView = default;
         [SerializeField] private ResultView resultView = default;
         [SerializeField] private SlotView slotView = default;
         [SerializeField] private StageView stageView = default;
@@ -67,6 +68,7 @@ namespace OneButton.InGame.Installer
             builder.RegisterInstance<CoinView>(coinView);
             builder.RegisterInstance<HpView>(hpView);
             builder.RegisterInstance<PlayerView>(playerView);
+            builder.RegisterInstance<RankingView>(rankingView);
             builder.RegisterInstance<ResultView>(resultView);
             builder.RegisterInstance<SlotView>(slotView);
             builder.RegisterInstance<StageView>(stageView);
