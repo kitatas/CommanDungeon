@@ -48,7 +48,7 @@ namespace OneButton.InGame.Presentation.Controller
                     await _playerView.MoveAsync(direction, token);
 
                     // 階段に到達
-                    if (_stepView.IsGoal(_playerView.currentPosition))
+                    if (_stepView.IsEqualPosition(_playerView.currentPosition))
                     {
                         _slotView.SetFocus(-1);
 

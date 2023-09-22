@@ -2,19 +2,23 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using OneButton.InGame.Domain.UseCase;
 using OneButton.InGame.Presentation.View;
-using UnityEngine;
 
 namespace OneButton.InGame.Presentation.Controller
 {
     public sealed class StepState : BaseState
     {
         private readonly StepCountUseCase _stepCountUseCase;
+        private readonly FloorItemView _floorItemView;
+        private readonly PlayerView _playerView;
         private readonly StageView _stageView;
         private readonly StepView _stepView;
 
-        public StepState(StepCountUseCase stepCountUseCase, StageView stageView, StepView stepView)
+        public StepState(StepCountUseCase stepCountUseCase, FloorItemView floorItemView, PlayerView playerView,
+            StageView stageView, StepView stepView)
         {
             _stepCountUseCase = stepCountUseCase;
+            _floorItemView = floorItemView;
+            _playerView = playerView;
             _stageView = stageView;
             _stepView = stepView;
         }
@@ -23,6 +27,7 @@ namespace OneButton.InGame.Presentation.Controller
 
         public override async UniTask InitAsync(CancellationToken token)
         {
+            _floorItemView.Init();
             await UniTask.Yield(token);
         }
 
@@ -35,9 +40,15 @@ namespace OneButton.InGame.Presentation.Controller
 
             _stepCountUseCase.Increment();
 
-            // TODO: ステージ内アイテムのポップ
             // 次フロアの階段位置抽選
             _stepView.LotNextPosition();
+
+            // 次フロア内のアイテム抽選
+            // 階段位置とは被らないようにする
+            _floorItemView.LotItems(_playerView, _stepView);
+
+            // 出現
+            _floorItemView.ShowAll(StageConfig.TWEEN_TIME);
             await _stepView.ShowAsync(StageConfig.TWEEN_TIME, token);
 
             return GameState.Slot;

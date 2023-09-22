@@ -7,6 +7,9 @@ namespace OneButton.InGame
 
     public sealed class StageConfig
     {
+        public const int HEIGHT = 6;
+        public const int WIDTH = 8;
+
         public const float CORRECT_VALUE = 0.5f;
         public const int X_MIN = -4;
         public const int X_MAX = 3;
@@ -59,5 +62,13 @@ namespace OneButton.InGame
         public const int FLOOR_RATE = 10000;
         public const int COIN_RATE = 100;
         public const int SLOT_MATCH_RATE = 1000;
+    }
+
+    public sealed class ItemConfig
+    {
+        public const float INIT_POSITION_X = -3.5625f;
+        public const float INIT_POSITION_Y = -1.25f;
+
+        public const int PROBABILITY = 30;
     }
 }

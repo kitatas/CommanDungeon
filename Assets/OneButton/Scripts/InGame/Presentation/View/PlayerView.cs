@@ -66,5 +66,13 @@ namespace OneButton.InGame.Presentation.View
                 .SetEase(Ease.Linear)
                 .SetLink(gameObject);
         }
+
+        public bool IsEqualPosition(Vector3 playerPosition)
+        {
+            var position = transform.position;
+            return
+                playerPosition.x.IsBetween(position.x - 0.05f, position.x + 0.05f) &&
+                playerPosition.y.IsBetween(position.y - 0.05f, position.y + 0.05f);
+        }
     }
 }
