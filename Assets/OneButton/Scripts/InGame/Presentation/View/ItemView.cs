@@ -9,6 +9,12 @@ namespace OneButton.InGame.Presentation.View
         [SerializeField] private SpriteRenderer spriteRenderer = default;
 
         public abstract PatternType pattern { get; }
+        public Vector3 currentPosition => transform.position;
+
+        public void PickUp()
+        {
+            this.DelayFrame(1, () => Destroy(gameObject));
+        }
 
         public Tween Show(float duration)
         {

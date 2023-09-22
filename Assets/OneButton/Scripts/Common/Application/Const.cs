@@ -5,6 +5,7 @@ namespace OneButton.Common
         public const string NOT_FOUND_STATE = "NOT_FOUND_STATE";
         public const string NOT_FOUND_REEL = "NOT_FOUND_REEL";
         public const string NOT_FOUND_MOVE_TYPE = "NOT_FOUND_MOVE_TYPE";
+        public const string NOT_FOUND_ITEM_TYPE = "NOT_FOUND_ITEM_TYPE";
         public const string NOT_FOUND_REEL_DATA = "NOT_FOUND_REEL_DATA";
     }
 }

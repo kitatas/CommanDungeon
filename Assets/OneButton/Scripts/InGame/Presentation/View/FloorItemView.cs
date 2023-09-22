@@ -24,6 +24,22 @@ namespace OneButton.InGame.Presentation.View
             _currentItemViews = new List<ItemView>();
         }
 
+        public PatternType GetPickUpItem(PlayerView player)
+        {
+            var pickUpItem = _currentItemViews
+                .Find(x => x != null && player.IsEqualPosition(x.currentPosition));
+
+            if (pickUpItem == null)
+            {
+                return PatternType.None;
+            }
+            else
+            {
+                pickUpItem.PickUp();
+                return pickUpItem.pattern;
+            }
+        }
+
         public void LotItems(PlayerView player, StepView step)
         {
             _currentItemViews.Clear();

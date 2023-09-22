@@ -1,5 +1,7 @@
+using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using OneButton.Common;
 using OneButton.InGame.Domain.UseCase;
 using OneButton.InGame.Presentation.View;
 
@@ -7,14 +9,19 @@ namespace OneButton.InGame.Presentation.Controller
 {
     public sealed class MoveState : BaseState
     {
+        private readonly CoinUseCase _coinUseCase;
         private readonly HpUseCase _hpUseCase;
+        private readonly FloorItemView _floorItemView;
         private readonly PlayerView _playerView;
         private readonly SlotView _slotView;
         private readonly StepView _stepView;
 
-        public MoveState(HpUseCase hpUseCase, PlayerView playerView, SlotView slotView, StepView stepView)
+        public MoveState(CoinUseCase coinUseCase, HpUseCase hpUseCase, FloorItemView floorItemView,
+            PlayerView playerView, SlotView slotView, StepView stepView)
         {
+            _coinUseCase = coinUseCase;
             _hpUseCase = hpUseCase;
+            _floorItemView = floorItemView;
             _playerView = playerView;
             _slotView = slotView;
             _stepView = stepView;
@@ -46,6 +53,22 @@ namespace OneButton.InGame.Presentation.Controller
                 foreach (var direction in directions)
                 {
                     await _playerView.MoveAsync(direction, token);
+
+                    // アイテム取得
+                    var item = _floorItemView.GetPickUpItem(_playerView);
+                    switch (item)
+                    {
+                        case PatternType.None:
+                            break;
+                        case PatternType.Coin:
+                            _coinUseCase.Increase(1);
+                            break;
+                        case PatternType.Heart:
+                            _hpUseCase.Increase(1);
+                            break;
+                        default:
+                            throw new Exception(ExceptionConfig.NOT_FOUND_ITEM_TYPE);
+                    }
 
                     // 階段に到達
                     if (_stepView.IsEqualPosition(_playerView.currentPosition))
