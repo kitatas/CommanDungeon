@@ -10,10 +10,11 @@ namespace OneButton.Boot.Presentation.Controller
     {
         private readonly List<BaseState> _states;
 
-        public StateController()
+        public StateController(LoadState load)
         {
             _states = new List<BaseState>
             {
+                load,
             };
         }
 

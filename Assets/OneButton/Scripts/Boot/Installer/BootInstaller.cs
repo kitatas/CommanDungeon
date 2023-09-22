@@ -14,6 +14,7 @@ namespace OneButton.Boot.Installer
             builder.Register<StateUseCase>(Lifetime.Scoped);
 
             // Controller
+            builder.Register<LoadState>(Lifetime.Scoped);
             builder.Register<StateController>(Lifetime.Scoped);
 
             // Presenter
