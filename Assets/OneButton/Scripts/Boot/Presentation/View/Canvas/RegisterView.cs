@@ -16,7 +16,7 @@ namespace OneButton.Boot.Presentation.View
 
         public async UniTask<string> DecisionNameAsync(float animationTime, CancellationToken token)
         {
-            inputField.text = $"";
+            inputField.text = GetSampleName();
             await ShowAsync(animationTime, token);
 
             // 決定ボタン押下待ち
@@ -24,6 +24,11 @@ namespace OneButton.Boot.Presentation.View
             await HideAsync(animationTime, token);
 
             return inputName;
+        }
+
+        private static string GetSampleName()
+        {
+            return "user" + $"{Random.Range(0, 1000000):000000}";
         }
     }
 }
