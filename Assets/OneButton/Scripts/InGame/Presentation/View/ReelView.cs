@@ -36,6 +36,8 @@ namespace OneButton.InGame.Presentation.View
             var a = value ? 1.0f : 0.5f;
             frame.SetColorA(a);
             pattern.SetColorA(a);
+
+            transform.localScale = value ? Vector3.one : Vector3.one * 0.75f;
         }
 
         public void SetRoll(bool value)
