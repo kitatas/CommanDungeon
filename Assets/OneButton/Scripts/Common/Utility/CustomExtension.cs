@@ -17,7 +17,7 @@ namespace OneButton.Common
         {
             return type switch
             {
-                RankingType.Coin => "コインのダンジョン",
+                RankingType.Coin => "大富豪の地下遺跡",
                 _ => throw new Exception(ExceptionConfig.NOT_FOUND_RANKING_TYPE),
             };
         }
