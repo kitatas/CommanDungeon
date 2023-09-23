@@ -1,6 +1,8 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using OneButton.Common;
+using OneButton.Common.Presentation.Controller;
 using OneButton.InGame.Domain.UseCase;
 using OneButton.InGame.Presentation.Controller;
 using UniRx;
@@ -12,12 +14,15 @@ namespace OneButton.InGame.Presentation.Presenter
     {
         private readonly StateUseCase _stateUseCase;
         private readonly StateController _stateController;
+        private readonly ExceptionController _exceptionController;
         private readonly CancellationTokenSource _tokenSource;
 
-        public StatePresenter(StateUseCase stateUseCase, StateController stateController)
+        public StatePresenter(StateUseCase stateUseCase, StateController stateController,
+            ExceptionController exceptionController)
         {
             _stateUseCase = stateUseCase;
             _stateController = stateController;
+            _exceptionController = exceptionController;
             _tokenSource = new CancellationTokenSource();
         }
 
@@ -39,7 +44,12 @@ namespace OneButton.InGame.Presentation.Presenter
             }
             catch (Exception e)
             {
-                // TODO: Retry
+                var type = await _exceptionController.ShowExceptionAsync(e, _tokenSource.Token);
+                if (type == ExceptionType.Retry)
+                {
+                    await ExecAsync(state, token);
+                }
+
                 throw;
             }
         }
