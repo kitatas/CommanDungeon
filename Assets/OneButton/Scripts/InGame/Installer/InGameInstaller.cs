@@ -27,6 +27,7 @@ namespace OneButton.InGame.Installer
         [SerializeField] private StageView stageView = default;
         [SerializeField] private StepCountView stepCountView = default;
         [SerializeField] private StepView stepView = default;
+        [SerializeField] private TitleView titleView = default;
 
         protected override void Configure(IContainerBuilder builder)
         {
@@ -79,6 +80,7 @@ namespace OneButton.InGame.Installer
             builder.RegisterInstance<StageView>(stageView);
             builder.RegisterInstance<StepCountView>(stepCountView);
             builder.RegisterInstance<StepView>(stepView);
+            builder.RegisterInstance<TitleView>(titleView);
         }
     }
 }

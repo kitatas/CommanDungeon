@@ -1,5 +1,6 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using OneButton.Common;
 using OneButton.InGame.Domain.UseCase;
 using OneButton.InGame.Presentation.View;
 using UniRx;
@@ -12,14 +13,16 @@ namespace OneButton.InGame.Presentation.Controller
         private readonly StepCountUseCase _stepCountUseCase;
         private readonly MainButtonView _mainButtonView;
         private readonly SlotView _slotView;
+        private readonly TitleView _titleView;
 
         public SlotState(SlotUseCase slotUseCase, StepCountUseCase stepCountUseCase, MainButtonView mainButtonView,
-            SlotView slotView)
+            SlotView slotView, TitleView titleView)
         {
             _slotUseCase = slotUseCase;
             _stepCountUseCase = stepCountUseCase;
             _mainButtonView = mainButtonView;
             _slotView = slotView;
+            _titleView = titleView;
         }
 
         public override GameState state => GameState.Slot;
@@ -35,6 +38,7 @@ namespace OneButton.InGame.Presentation.Controller
                 })
                 .AddTo(token);
 
+            _titleView.InitAsync(UiConfig.POPUP_TIME, token).Forget();
             await UniTask.Yield(token);
         }
 
