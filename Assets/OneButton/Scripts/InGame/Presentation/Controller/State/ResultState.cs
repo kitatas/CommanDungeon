@@ -32,12 +32,14 @@ namespace OneButton.InGame.Presentation.Controller
 
         public override async UniTask InitAsync(CancellationToken token)
         {
+            _soundUseCase.PlayBgm(BgmType.Main);
             _resultView.Init();
             await UniTask.Yield(token);
         }
 
         public override async UniTask<GameState> TickAsync(CancellationToken token)
         {
+            _soundUseCase.PlayBgm(BgmType.Result);
             await _resultView.ShowAsync(ScoreConfig.SHOW_TIME, token);
 
             Action<SeType> playSe = x => _soundUseCase.PlaySe(x);
