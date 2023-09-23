@@ -10,14 +10,16 @@ namespace OneButton.InGame.Presentation.Controller
         private readonly ScoreUseCase _scoreUseCase;
         private readonly SlotMatchUseCase _slotMatchUseCase;
         private readonly StepCountUseCase _stepCountUseCase;
+        private readonly UserRecordUseCase _userRecordUseCase;
 
         public FinishState(CoinUseCase coinUseCase, ScoreUseCase scoreUseCase, SlotMatchUseCase slotMatchUseCase,
-            StepCountUseCase stepCountUseCase)
+            StepCountUseCase stepCountUseCase, UserRecordUseCase userRecordUseCase)
         {
             _coinUseCase = coinUseCase;
             _scoreUseCase = scoreUseCase;
             _slotMatchUseCase = slotMatchUseCase;
             _stepCountUseCase = stepCountUseCase;
+            _userRecordUseCase = userRecordUseCase;
         }
 
         public override GameState state => GameState.Finish;
@@ -29,12 +31,13 @@ namespace OneButton.InGame.Presentation.Controller
 
         public override async UniTask<GameState> TickAsync(CancellationToken token)
         {
+            _scoreUseCase.Reset();
             _scoreUseCase.Add(_stepCountUseCase.currentValue * ScoreConfig.FLOOR_RATE);
             _scoreUseCase.Add(_coinUseCase.currentValue * ScoreConfig.COIN_RATE);
             _scoreUseCase.Add(_slotMatchUseCase.currentValue * ScoreConfig.SLOT_MATCH_RATE);
 
-            // TODO: ランキング送信
-            await UniTask.Yield(token);
+            // ランキング送信
+            await _userRecordUseCase.SendScoreAsync(_scoreUseCase.score, token);
 
             return GameState.Result;
         }

@@ -6,6 +6,11 @@ namespace OneButton.InGame.Domain.UseCase
 
         public ScoreUseCase()
         {
+            Reset();
+        }
+
+        public void Reset()
+        {
             score = 0;
         }
 

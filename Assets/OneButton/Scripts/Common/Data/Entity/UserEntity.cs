@@ -13,6 +13,11 @@ namespace OneButton.Common.Data.Entity
             playEntity = entity.playEntity;
         }
 
+        public void SetPlay(UserPlayEntity play)
+        {
+            playEntity = play;
+        }
+
         public bool IsEmptyUserName()
         {
             return nameEntity == null || string.IsNullOrEmpty(nameEntity.name);
