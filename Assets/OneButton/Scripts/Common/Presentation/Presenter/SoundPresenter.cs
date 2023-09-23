@@ -25,6 +25,14 @@ namespace OneButton.Common.Presentation.Presenter
             _soundUseCase.playSe
                 .Subscribe(x => _soundView.PlaySe(x.clip, x.delay))
                 .AddTo(_soundView);
+
+            _soundUseCase.bgmVolume
+                .Subscribe(_soundView.SetBgmVolume)
+                .AddTo(_soundView);
+
+            _soundUseCase.seVolume
+                .Subscribe(_soundView.SetSeVolume)
+                .AddTo(_soundView);
         }
     }
 }
