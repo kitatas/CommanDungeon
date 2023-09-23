@@ -28,6 +28,10 @@ namespace OneButton.Common
     public sealed class UiConfig
     {
         public const float POPUP_TIME = 0.25f;
+        public const float PRESS_TIME = 0.1f;
+
+        public const float MAIN_BUTTON_TEXT_DEFAULT_HEIGHT = 33.5f;
+        public const float MAIN_BUTTON_TEXT_PRESS_HEIGHT = 15.5f;
     }
 
     public sealed class SaveConfig

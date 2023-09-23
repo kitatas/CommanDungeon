@@ -74,9 +74,14 @@ namespace OneButton.Base.Presentation.View
                 .SetLink(gameObject);
         }
 
-        public void Activate(bool value)
+        public virtual void Activate(bool value)
         {
             button.interactable = value;
+        }
+
+        public void SetImage(Sprite sprite)
+        {
+            button.image.sprite = sprite;
         }
     }
 }

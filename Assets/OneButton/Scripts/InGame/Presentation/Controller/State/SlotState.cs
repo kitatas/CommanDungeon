@@ -29,6 +29,8 @@ namespace OneButton.InGame.Presentation.Controller
 
         public override async UniTask InitAsync(CancellationToken token)
         {
+            _mainButtonView.Init();
+
             _slotView.Init();
             _stepCountUseCase.difficulty
                 .Subscribe(_ =>
