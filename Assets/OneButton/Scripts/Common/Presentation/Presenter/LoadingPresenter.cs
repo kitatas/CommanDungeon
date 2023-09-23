@@ -39,6 +39,7 @@ namespace OneButton.Common.Presentation.Presenter
 
             // 非表示で初期化する
             _loadingUseCase.Set(false);
+            _loadingView.HideAsync(0.0f, _tokenSource.Token).Forget();
         }
 
         public void Dispose()
