@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d00e3cf4c0794fca8058d5940b24106d, type: 3}
+  m_Name: SlotTable
+  m_EditorClassIdentifier: 
+  dataList:
+  - {fileID: 11400000, guid: 66c909d3ee85c4a61aabaeb4ea0e119d, type: 2}
+  - {fileID: 11400000, guid: 1584d57895c954d6dabe134b94d01a26, type: 2}
+  - {fileID: 11400000, guid: 19dff59f8aed54b9084e000b1e8ab16d, type: 2}
+  - {fileID: 11400000, guid: c6cf26a2b4f5e42648a340eb1f1ef352, type: 2}

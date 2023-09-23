@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1910e2ac8dc84c798ad4fc0235f68789, type: 3}
+  m_Name: SlotData - Easy
+  m_EditorClassIdentifier: 
+  dataList:
+  - {fileID: 11400000, guid: 6b732607f62824eafb87cbd7dd3eec40, type: 2}
+  - {fileID: 11400000, guid: b0a717c07673845418ef44e8f9379693, type: 2}
+  - {fileID: 11400000, guid: b898a981a4e0c4e5bbdc2fcc7d600b3d, type: 2}
+  difficultyType: 2
