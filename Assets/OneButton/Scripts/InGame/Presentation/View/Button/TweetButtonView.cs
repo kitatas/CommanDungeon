@@ -36,7 +36,7 @@ namespace OneButton.InGame.Presentation.View
             await Hide(duration).WithCancellation(token);
         }
 
-        public void SetUp(RankingType type, int score)
+        public void SetUp(RankingType type, int stepCount, int score)
         {
             SetNormal();
             pushed += () =>
@@ -45,7 +45,7 @@ namespace OneButton.InGame.Presentation.View
                 this.Delay(UiConfig.PRESS_TIME, SetNormal);
             };
 
-            var tweetText = $"{type.ToName()} でスコア {score} 獲得した！\n";
+            var tweetText = $"{type.ToName()} で B{stepCount}F まで到達した！\nスコアは {score}\n";
             Tweet(tweetText);
         }
 

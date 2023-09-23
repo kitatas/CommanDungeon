@@ -14,18 +14,20 @@ namespace OneButton.InGame.Presentation.Controller
         private readonly SceneUseCase _sceneUseCase;
         private readonly ScoreUseCase _scoreUseCase;
         private readonly SoundUseCase _soundUseCase;
+        private readonly StepCountUseCase _stepCountUseCase;
         private readonly MainButtonView _mainButtonView;
         private readonly TweetButtonView _tweetButtonView;
         private readonly RankingView _rankingView;
 
         public RankingState(RankingUseCase rankingUseCase, SceneUseCase sceneUseCase, ScoreUseCase scoreUseCase,
-            SoundUseCase soundUseCase, MainButtonView mainButtonView, TweetButtonView tweetButtonView,
-            RankingView rankingView)
+            SoundUseCase soundUseCase, StepCountUseCase stepCountUseCase, MainButtonView mainButtonView,
+            TweetButtonView tweetButtonView, RankingView rankingView)
         {
             _rankingUseCase = rankingUseCase;
             _sceneUseCase = sceneUseCase;
             _scoreUseCase = scoreUseCase;
             _soundUseCase = soundUseCase;
+            _stepCountUseCase = stepCountUseCase;
             _mainButtonView = mainButtonView;
             _tweetButtonView = tweetButtonView;
             _rankingView = rankingView;
@@ -52,7 +54,7 @@ namespace OneButton.InGame.Presentation.Controller
 
             // x に post
             _soundUseCase.PlaySe(SeType.PopView);
-            _tweetButtonView.SetUp(RankingType.Coin, _scoreUseCase.score);
+            _tweetButtonView.SetUp(RankingType.Coin, _stepCountUseCase.currentValue, _scoreUseCase.score);
             await _tweetButtonView.ShowAsync(UiConfig.POPUP_TIME, token);
 
             _mainButtonView.Activate(true);
