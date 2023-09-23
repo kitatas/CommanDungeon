@@ -32,10 +32,5 @@ namespace OneButton.Common.Data.Entity
         }
 
         protected override RankingType type => RankingType.Coin;
-
-        public override float GetScore()
-        {
-            return (base.GetScore() / PlayFabConfig.SCORE_RATE);
-        }
     }
 }

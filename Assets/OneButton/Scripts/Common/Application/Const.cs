@@ -41,7 +41,6 @@ namespace OneButton.Common
         public const string USER_PLAY_RECORD_KEY = "";
         public const string RANKING_COIN_KEY = "";
 
-        public const int SCORE_RATE = 10000;
         public const int SHOW_MAX_RANKING = 50;
         public const int MIN_NAME_LENGTH = 3;
         public const int MAX_NAME_LENGTH = 10;
