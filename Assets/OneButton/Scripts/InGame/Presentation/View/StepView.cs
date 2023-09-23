@@ -57,11 +57,13 @@ namespace OneButton.InGame.Presentation.View
                 // 階段が同じ位置だった場合は再抽選
                 var x = Random.Range(StageConfig.X_MIN, StageConfig.X_MAX + 1) + StageConfig.CORRECT_VALUE;
                 var y = Random.Range(StageConfig.Y_MIN, StageConfig.Y_MAX + 1) + StageConfig.CORRECT_VALUE;
-                nextPosition = new Vector3(x, y, 0.0f);
-                if (nextPosition != position)
+                if (position.x.IsEqual(x) && position.y.IsEqual(y))
                 {
-                    break;
+                    continue;
                 }
+
+                nextPosition = new Vector3(x, y, 0.0f);
+                break;
             }
 
             transform.position = nextPosition;
