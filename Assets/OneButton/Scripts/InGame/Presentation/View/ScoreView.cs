@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using OneButton.Common;
 using TMPro;
 using UnityEngine;
 
@@ -22,8 +23,10 @@ namespace OneButton.InGame.Presentation.View
             scoreCount.text = "";
         }
 
-        public async UniTask ShowTitleAsync(string title, float duration, CancellationToken token)
+        public async UniTask ShowTitleAsync(string title, float duration, Action<SeType> playSe,
+            CancellationToken token)
         {
+            playSe?.Invoke(SeType.LastScore);
             await titleLabel
                 .DOText(title, duration)
                 .SetEase(Ease.Linear)
@@ -33,14 +36,18 @@ namespace OneButton.InGame.Presentation.View
             await UniTask.Delay(TimeSpan.FromSeconds(duration), cancellationToken: token);
         }
 
-        public async UniTask ShowValueAsync(int rate, int count, float duration, CancellationToken token)
+        public async UniTask ShowValueAsync(int rate, int count, float duration, Action<SeType> playSe,
+            CancellationToken token)
         {
+            playSe?.Invoke(SeType.Result);
             scoreRate.text = $"{rate}";
             await UniTask.Delay(TimeSpan.FromSeconds(duration), cancellationToken: token);
 
+            playSe?.Invoke(SeType.Result);
             mul.text = $"x";
             await UniTask.Delay(TimeSpan.FromSeconds(duration), cancellationToken: token);
 
+            playSe?.Invoke(SeType.Result);
             scoreCount.text = $"{count}";
             await UniTask.Delay(TimeSpan.FromSeconds(duration), cancellationToken: token);
         }

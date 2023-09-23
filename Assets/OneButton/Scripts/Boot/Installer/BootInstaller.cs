@@ -27,6 +27,7 @@ namespace OneButton.Boot.Installer
             builder.Register<StateController>(Lifetime.Scoped);
 
             // Presenter
+            builder.RegisterEntryPoint<ButtonPresenter>();
             builder.RegisterEntryPoint<StatePresenter>();
 
             // View

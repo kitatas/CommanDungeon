@@ -35,6 +35,15 @@ namespace OneButton.Common
     {
         None,
         Decision,
+        MainButton,
+        Move,
+        GetCoin,
+        GetHeart,
+        NextFloor,
+        Result,
+        LastScore,
+        PopView,
+        Fade,
     }
 
     public enum RankingType

@@ -1,5 +1,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using OneButton.Common;
+using OneButton.Common.Domain.UseCase;
 using OneButton.InGame.Domain.UseCase;
 using OneButton.InGame.Presentation.View;
 
@@ -7,15 +9,17 @@ namespace OneButton.InGame.Presentation.Controller
 {
     public sealed class StepState : BaseState
     {
+        private readonly SoundUseCase _soundUseCase;
         private readonly StepCountUseCase _stepCountUseCase;
         private readonly FloorItemView _floorItemView;
         private readonly PlayerView _playerView;
         private readonly StageView _stageView;
         private readonly StepView _stepView;
 
-        public StepState(StepCountUseCase stepCountUseCase, FloorItemView floorItemView, PlayerView playerView,
-            StageView stageView, StepView stepView)
+        public StepState(SoundUseCase soundUseCase, StepCountUseCase stepCountUseCase, FloorItemView floorItemView,
+            PlayerView playerView, StageView stageView, StepView stepView)
         {
+            _soundUseCase = soundUseCase;
             _stepCountUseCase = stepCountUseCase;
             _floorItemView = floorItemView;
             _playerView = playerView;
@@ -33,6 +37,7 @@ namespace OneButton.InGame.Presentation.Controller
 
         public override async UniTask<GameState> TickAsync(CancellationToken token)
         {
+            _soundUseCase.PlaySe(SeType.NextFloor);
             _floorItemView.HideAll(StageConfig.TWEEN_TIME);
             await (
                 _stageView.SwitchAsync(StageConfig.TWEEN_TIME, token),

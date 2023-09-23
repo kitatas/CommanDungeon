@@ -13,16 +13,19 @@ namespace OneButton.InGame.Presentation.Controller
         private readonly RankingUseCase _rankingUseCase;
         private readonly SceneUseCase _sceneUseCase;
         private readonly ScoreUseCase _scoreUseCase;
+        private readonly SoundUseCase _soundUseCase;
         private readonly MainButtonView _mainButtonView;
         private readonly TweetButtonView _tweetButtonView;
         private readonly RankingView _rankingView;
 
         public RankingState(RankingUseCase rankingUseCase, SceneUseCase sceneUseCase, ScoreUseCase scoreUseCase,
-            MainButtonView mainButtonView, TweetButtonView tweetButtonView, RankingView rankingView)
+            SoundUseCase soundUseCase, MainButtonView mainButtonView, TweetButtonView tweetButtonView,
+            RankingView rankingView)
         {
             _rankingUseCase = rankingUseCase;
             _sceneUseCase = sceneUseCase;
             _scoreUseCase = scoreUseCase;
+            _soundUseCase = soundUseCase;
             _mainButtonView = mainButtonView;
             _tweetButtonView = tweetButtonView;
             _rankingView = rankingView;
@@ -43,10 +46,12 @@ namespace OneButton.InGame.Presentation.Controller
             var records = await _rankingUseCase.GetRankingAsync(token);
             _rankingView.SetUp(records);
 
+            _soundUseCase.PlaySe(SeType.PopView);
             await _rankingView.ShowAsync(UiConfig.POPUP_TIME, token);
-            await UniTask.Delay(TimeSpan.FromSeconds(UiConfig.POPUP_TIME), cancellationToken: token);
+            await UniTask.Delay(TimeSpan.FromSeconds(ScoreConfig.SHOW_TIME), cancellationToken: token);
 
             // x に post
+            _soundUseCase.PlaySe(SeType.PopView);
             _tweetButtonView.SetUp(RankingType.Coin, _scoreUseCase.score);
             await _tweetButtonView.ShowAsync(UiConfig.POPUP_TIME, token);
 

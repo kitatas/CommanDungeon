@@ -3,7 +3,7 @@ using OneButton.Common.Domain.UseCase;
 using UnityEngine;
 using VContainer.Unity;
 
-namespace OneButton.InGame.Presentation.Presenter
+namespace OneButton.Boot.Presentation.Presenter
 {
     public sealed class ButtonPresenter : IInitializable
     {

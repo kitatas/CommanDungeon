@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using OneButton.Common;
+using OneButton.Common.Domain.UseCase;
 using OneButton.InGame.Domain.UseCase;
 using OneButton.InGame.Presentation.View;
 
@@ -12,17 +13,20 @@ namespace OneButton.InGame.Presentation.Controller
         private readonly CoinUseCase _coinUseCase;
         private readonly HpUseCase _hpUseCase;
         private readonly SlotMatchUseCase _slotMatchUseCase;
+        private readonly SoundUseCase _soundUseCase;
         private readonly FloorItemView _floorItemView;
         private readonly PlayerView _playerView;
         private readonly SlotView _slotView;
         private readonly StepView _stepView;
 
         public MoveState(CoinUseCase coinUseCase, HpUseCase hpUseCase, SlotMatchUseCase slotMatchUseCase,
-            FloorItemView floorItemView, PlayerView playerView, SlotView slotView, StepView stepView)
+            SoundUseCase soundUseCase, FloorItemView floorItemView, PlayerView playerView, SlotView slotView,
+            StepView stepView)
         {
             _coinUseCase = coinUseCase;
             _hpUseCase = hpUseCase;
             _slotMatchUseCase = slotMatchUseCase;
+            _soundUseCase = soundUseCase;
             _floorItemView = floorItemView;
             _playerView = playerView;
             _slotView = slotView;
@@ -59,6 +63,7 @@ namespace OneButton.InGame.Presentation.Controller
                 var directions = patternData.move.ToVector3List();
                 foreach (var direction in directions)
                 {
+                    _soundUseCase.PlaySe(SeType.Move);
                     await _playerView.MoveAsync(direction, token);
 
                     // アイテム取得
@@ -68,9 +73,11 @@ namespace OneButton.InGame.Presentation.Controller
                         case PatternType.None:
                             break;
                         case PatternType.Coin:
+                            _soundUseCase.PlaySe(SeType.GetCoin);
                             _coinUseCase.Increase(1);
                             break;
                         case PatternType.Heart:
+                            _soundUseCase.PlaySe(SeType.GetHeart);
                             _hpUseCase.Increase(1);
                             break;
                         default:

@@ -1,6 +1,8 @@
+using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using OneButton.Common;
 using TMPro;
 using UnityEngine;
 
@@ -36,22 +38,25 @@ namespace OneButton.InGame.Presentation.View
                 .WithCancellation(token);
         }
 
-        public async UniTask ShowFloorScoreAsync(int score, float duration, CancellationToken token)
+        public async UniTask ShowFloorScoreAsync(int score, float duration, Action<SeType> playSe,
+            CancellationToken token)
         {
-            await floorScore.ShowTitleAsync("フロアとうたつボーナス", duration, token);
-            await floorScore.ShowValueAsync(ScoreConfig.FLOOR_RATE, score, duration, token);
+            await floorScore.ShowTitleAsync("フロアとうたつボーナス", duration, playSe, token);
+            await floorScore.ShowValueAsync(ScoreConfig.FLOOR_RATE, score, duration, playSe, token);
         }
 
-        public async UniTask ShowCoinScoreAsync(int score, float duration, CancellationToken token)
+        public async UniTask ShowCoinScoreAsync(int score, float duration, Action<SeType> playSe,
+            CancellationToken token)
         {
-            await coinScore.ShowTitleAsync("コインすうボーナス", duration, token);
-            await coinScore.ShowValueAsync(ScoreConfig.COIN_RATE, score, duration, token);
+            await coinScore.ShowTitleAsync("コインまいすうボーナス", duration, playSe, token);
+            await coinScore.ShowValueAsync(ScoreConfig.COIN_RATE, score, duration, playSe, token);
         }
 
-        public async UniTask ShowMatchScoreAsync(int score, float duration, CancellationToken token)
+        public async UniTask ShowMatchScoreAsync(int score, float duration, Action<SeType> playSe,
+            CancellationToken token)
         {
-            await matchScore.ShowTitleAsync("コマンドマッチボーナス", duration, token);
-            await matchScore.ShowValueAsync(ScoreConfig.SLOT_MATCH_RATE, score, duration, token);
+            await matchScore.ShowTitleAsync("コマンドマッチボーナス", duration, playSe, token);
+            await matchScore.ShowValueAsync(ScoreConfig.SLOT_MATCH_RATE, score, duration, playSe, token);
         }
 
         public async UniTask TweenLastScoreAsync(int score, float duration, CancellationToken token)
