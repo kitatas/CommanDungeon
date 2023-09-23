@@ -11,16 +11,18 @@ namespace OneButton.InGame.Presentation.Controller
     {
         private readonly CoinUseCase _coinUseCase;
         private readonly HpUseCase _hpUseCase;
+        private readonly SlotMatchUseCase _slotMatchUseCase;
         private readonly FloorItemView _floorItemView;
         private readonly PlayerView _playerView;
         private readonly SlotView _slotView;
         private readonly StepView _stepView;
 
-        public MoveState(CoinUseCase coinUseCase, HpUseCase hpUseCase, FloorItemView floorItemView,
-            PlayerView playerView, SlotView slotView, StepView stepView)
+        public MoveState(CoinUseCase coinUseCase, HpUseCase hpUseCase, SlotMatchUseCase slotMatchUseCase,
+            FloorItemView floorItemView, PlayerView playerView, SlotView slotView, StepView stepView)
         {
             _coinUseCase = coinUseCase;
             _hpUseCase = hpUseCase;
+            _slotMatchUseCase = slotMatchUseCase;
             _floorItemView = floorItemView;
             _playerView = playerView;
             _slotView = slotView;
@@ -37,6 +39,11 @@ namespace OneButton.InGame.Presentation.Controller
 
         public override async UniTask<GameState> TickAsync(CancellationToken token)
         {
+            if (_slotView.IsMatchAll())
+            {
+                _slotMatchUseCase.Increment();
+            }
+
             for (int i = 0; i < SlotConfig.REEL_COUNT; i++)
             {
                 _slotView.SetFocus(i);

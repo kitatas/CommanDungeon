@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using OneButton.Common;
 using UniEx;
 using UnityEngine;
@@ -56,6 +57,17 @@ namespace OneButton.InGame.Presentation.View
             {
                 throw new Exception(ExceptionConfig.NOT_FOUND_REEL);
             }
+        }
+
+        public bool IsMatchAll()
+        {
+            var movePatternCount = reelViews
+                .Select(reelView => reelView.currentPattern.move)
+                .ToList()
+                .Distinct()
+                .Count();
+
+            return movePatternCount == 1;
         }
     }
 }
