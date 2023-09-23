@@ -55,7 +55,7 @@ namespace OneButton.InGame.Presentation.View
         public async UniTask ShowMatchScoreAsync(int score, float duration, Action<SeType> playSe,
             CancellationToken token)
         {
-            await matchScore.ShowTitleAsync("コマンドマッチボーナス", duration, playSe, token);
+            await matchScore.ShowTitleAsync("コマンドいっちボーナス", duration, playSe, token);
             await matchScore.ShowValueAsync(ScoreConfig.SLOT_MATCH_RATE, score, duration, playSe, token);
         }
 
