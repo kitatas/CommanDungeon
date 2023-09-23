@@ -63,7 +63,7 @@ namespace OneButton.InGame
 
         public const int FLOOR_RATE = 10000;
         public const int COIN_RATE = 100;
-        public const int SLOT_MATCH_RATE = 1000;
+        public const int SLOT_MATCH_RATE = 10;
     }
 
     public sealed class ItemConfig

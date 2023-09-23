@@ -43,8 +43,8 @@ namespace OneButton.InGame.Presentation.Controller
             await _resultView.ShowAsync(ScoreConfig.SHOW_TIME, token);
 
             Action<SeType> playSe = x => _soundUseCase.PlaySe(x);
-            await _resultView.ShowCoinScoreAsync(_coinUseCase.currentValue, ScoreConfig.SHOW_TIME, playSe, token);
             await _resultView.ShowMatchScoreAsync(_slotMatchUseCase.currentValue, ScoreConfig.SHOW_TIME, playSe, token);
+            await _resultView.ShowCoinScoreAsync(_coinUseCase.currentValue, ScoreConfig.SHOW_TIME, playSe, token);
             await _resultView.ShowFloorScoreAsync(_stepCountUseCase.currentValue, ScoreConfig.SHOW_TIME, playSe, token);
 
             _soundUseCase.PlaySe(SeType.LastScore);
