@@ -4,7 +4,7 @@ namespace OneButton.InGame
     {
         public const string GAME_ID = "CommanDungeon";
 
-        public const GameState INIT_STATE = GameState.None;
+        public const GameState INIT_STATE = GameState.Slot;
     }
 
     public sealed class StageConfig
