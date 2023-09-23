@@ -13,6 +13,11 @@ namespace OneButton.Common.Data.Entity
             playEntity = entity.playEntity;
         }
 
+        public void SetName(UserNameEntity name)
+        {
+            nameEntity = name;
+        }
+
         public void SetPlay(UserPlayEntity play)
         {
             playEntity = play;
