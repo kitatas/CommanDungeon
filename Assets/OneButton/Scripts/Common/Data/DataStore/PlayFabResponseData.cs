@@ -40,6 +40,13 @@ namespace OneButton.Common.Data.DataStore
                     .Select(x => new RankingRecordEntity(x, uid) as T)
                     .ToList();
             }
+
+            public List<CoinRankingRecordEntity> DeserializeCoinRanking(string uid)
+            {
+                return _leaderboard
+                    .Select(x => new CoinRankingRecordEntity(x, uid))
+                    .ToList();
+            }
         }
     }
 }

@@ -41,6 +41,7 @@ namespace OneButton.InGame.Installer
             // UseCase
             builder.Register<CoinUseCase>(Lifetime.Scoped);
             builder.Register<HpUseCase>(Lifetime.Scoped);
+            builder.Register<RankingUseCase>(Lifetime.Scoped);
             builder.Register<ScoreUseCase>(Lifetime.Scoped);
             builder.Register<SlotMatchUseCase>(Lifetime.Scoped);
             builder.Register<SlotUseCase>(Lifetime.Scoped);
