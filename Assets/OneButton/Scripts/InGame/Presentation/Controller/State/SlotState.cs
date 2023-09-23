@@ -42,6 +42,7 @@ namespace OneButton.InGame.Presentation.Controller
         {
             // リール回転開始
             _slotView.Refresh();
+            _mainButtonView.Activate(true);
 
             // リール停止 * 3
             for (int i = 0; i < SlotConfig.REEL_COUNT; i++)
@@ -50,6 +51,8 @@ namespace OneButton.InGame.Presentation.Controller
                 await _mainButtonView.PushAsync(token);
                 _slotView.StopReel(i);
             }
+
+            _mainButtonView.Activate(false);
 
             return GameState.Move;
         }
