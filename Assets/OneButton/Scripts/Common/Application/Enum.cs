@@ -36,4 +36,10 @@ namespace OneButton.Common
         None,
         Decision,
     }
+
+    public enum RankingType
+    {
+        None,
+        Coin,
+    }
 }

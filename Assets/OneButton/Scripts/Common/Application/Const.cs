@@ -11,6 +11,13 @@ namespace OneButton.Common
         public const string NOT_FOUND_REEL_DATA = "NOT_FOUND_REEL_DATA";
         public const string NOT_FOUND_BGM = "NOT_FOUND_BGM";
         public const string NOT_FOUND_SE = "NOT_FOUND_SE";
+        public const string NOT_FOUND_DATA = "NOT_FOUND_DATA";
+        public const string NOT_FOUND_RANKING_TYPE = "NOT_FOUND_RANKING_TYPE";
+        public const string UNMATCHED_USER_NAME_RULE = "UNMATCHED_USER_NAME_RULE";
+        public const string FAILED_LOGIN = "FAILED_LOGIN";
+        public const string FAILED_UPDATE_DATA = "FAILED_UPDATE_DATA";
+        public const string FAILED_DESERIALIZE_MASTER = "FAILED_DESERIALIZE_MASTER";
+        public const string FAILED_RESPONSE_DATA = "FAILED_RESPONSE_DATA";
     }
 
     public sealed class SceneConfig
@@ -26,6 +33,18 @@ namespace OneButton.Common
     public sealed class SaveConfig
     {
         public const string ES3_KEY = "";
+    }
+
+    public sealed class PlayFabConfig
+    {
+        public const string TITLE_ID = "";
+        public const string USER_PLAY_RECORD_KEY = "";
+        public const string RANKING_COIN_KEY = "";
+
+        public const int SCORE_RATE = 10000;
+        public const int SHOW_MAX_RANKING = 50;
+        public const int MIN_NAME_LENGTH = 3;
+        public const int MAX_NAME_LENGTH = 10;
     }
 
     public sealed class SoundConfig
