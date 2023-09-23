@@ -16,6 +16,7 @@ namespace OneButton.InGame.Installer
         [SerializeField] private SlotTable slotTable = default;
 
         [SerializeField] private MainButtonView mainButtonView = default;
+        [SerializeField] private TweetButtonView tweetButtonView = default;
         [SerializeField] private CoinView coinView = default;
         [SerializeField] private FloorItemView floorItemView = default;
         [SerializeField] private HpView hpView = default;
@@ -59,6 +60,7 @@ namespace OneButton.InGame.Installer
             builder.Register<StateController>(Lifetime.Scoped);
 
             // Presenter
+            builder.RegisterEntryPoint<ButtonPresenter>();
             builder.RegisterEntryPoint<CoinPresenter>();
             builder.RegisterEntryPoint<HpPresenter>();
             builder.RegisterEntryPoint<StatePresenter>();
@@ -66,6 +68,7 @@ namespace OneButton.InGame.Installer
 
             // View
             builder.RegisterInstance<MainButtonView>(mainButtonView);
+            builder.RegisterInstance<TweetButtonView>(tweetButtonView);
             builder.RegisterInstance<FloorItemView>(floorItemView);
             builder.RegisterInstance<CoinView>(coinView);
             builder.RegisterInstance<HpView>(hpView);

@@ -12,5 +12,14 @@ namespace OneButton.Common
                 _ => throw new Exception(ExceptionConfig.NOT_FOUND_RANKING_TYPE),
             };
         }
+
+        public static string ToName(this RankingType type)
+        {
+            return type switch
+            {
+                RankingType.Coin => "コインのダンジョン",
+                _ => throw new Exception(ExceptionConfig.NOT_FOUND_RANKING_TYPE),
+            };
+        }
     }
 }
