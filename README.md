@@ -19,5 +19,5 @@ Developed at unity1week "1ボタン"
 |[UniRx](https://github.com/neuecc/UniRx)|7.1.0||
 |[UniTask](https://github.com/Cysharp/UniTask)|2.3.3||
 |Unity UI|1.0.0||
-|[unityroom-tweet](https://github.com/naichilab/unityroom-tweet)|2.1|ver 1.1 or under|
+|[unityroom-tweet](https://github.com/naichilab/unityroom-tweet)|2.1||
 |[VContainer](https://github.com/hadashiA/VContainer)|1.13.1|
