@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.annulusgames.magic-tween": "https://github.com/AnnulusGames/MagicTween.git?path=/MagicTween/Assets/MagicTween",
     "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
     "com.kitatas.playfab-unitysdk": "https://github.com/kitatas/PlayFab-UnitySDK.git?path=ExampleTestProject/Assets/PlayFabSDK#feature/upm",
     "com.kitatas.uniex": "https://github.com/kitatas/UniEx.git?path=/Assets/UniEx",
@@ -8,9 +7,9 @@
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.2d.tilemap.extras": "3.1.1",
-    "com.unity.entities": "1.0.16",
     "com.unity.ide.rider": "3.0.25",
-    "com.unity.render-pipelines.universal": "14.0.8",
+    "com.unity.recorder": "4.0.1",
+    "com.unity.render-pipelines.universal": "12.1.10",
     "com.unity.test-framework": "1.1.33",
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.7.5",
