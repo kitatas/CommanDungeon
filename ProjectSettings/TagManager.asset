@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Stage
+    uniqueID: 2820459495
+    locked: 0
+  - name: Object
+    uniqueID: 360983039
+    locked: 0
+  - name: Player
+    uniqueID: 2516269589
+    locked: 0
+  - name: UI
+    uniqueID: 167179777
+    locked: 0
