@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using OneButton.Boot.Domain.UseCase;
@@ -38,7 +39,13 @@ namespace OneButton.Boot.Presentation.Controller
             // マスタからバージョンチェック
             var isUpdate = await _appVersionUseCase.CheckUpdateAsync(token);
 
+            // NOTE: loading が表示完了するまでの待機時間
+            await UniTask.Delay(TimeSpan.FromSeconds(UiConfig.POPUP_TIME + 0.1f), cancellationToken: token);
+
             _loadingUseCase.Set(false);
+
+            // NOTE: loading が非表示されるまでの待機時間
+            await UniTask.Delay(TimeSpan.FromSeconds(UiConfig.POPUP_TIME + 0.1f), cancellationToken: token);
 
             if (isUpdate)
             {
