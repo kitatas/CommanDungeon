@@ -36,11 +36,11 @@ namespace OneButton.Boot.Presentation.Controller
         {
             _loadingUseCase.Set(true);
 
-            // マスタからバージョンチェック
-            var isUpdate = await _appVersionUseCase.CheckUpdateAsync(token);
-
             // NOTE: loading が表示完了するまでの待機時間
             await UniTask.Delay(TimeSpan.FromSeconds(UiConfig.POPUP_TIME + 0.1f), cancellationToken: token);
+
+            // マスタからバージョンチェック
+            var isUpdate = await _appVersionUseCase.CheckUpdateAsync(token);
 
             _loadingUseCase.Set(false);
 

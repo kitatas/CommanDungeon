@@ -1,5 +1,11 @@
 namespace OneButton.Common
 {
+    public sealed class AppConfig
+    {
+        public const int MAJOR_VERSION = 1;
+        public const int MINOR_VERSION = 1;
+    }
+
     public sealed class ExceptionConfig
     {
         public const string UNKNOWN_ERROR = "UNKNOWN_ERROR";
@@ -44,6 +50,7 @@ namespace OneButton.Common
         public const string TITLE_ID = "";
         public const string USER_PLAY_RECORD_KEY = "";
         public const string RANKING_COIN_KEY = "";
+        public const string MASTER_APP_VERSION_KEY = "";
 
         public const int SHOW_MAX_RANKING = 50;
         public const int MIN_NAME_LENGTH = 3;
