@@ -17,6 +17,7 @@ namespace OneButton.InGame.Installer
 
         [SerializeField] private MainButtonView mainButtonView = default;
         [SerializeField] private TweetButtonView tweetButtonView = default;
+        [SerializeField] private AccountDeleteView accountDeleteView = default;
         [SerializeField] private CoinView coinView = default;
         [SerializeField] private FloorItemView floorItemView = default;
         [SerializeField] private HpView hpView = default;
@@ -74,8 +75,9 @@ namespace OneButton.InGame.Installer
             // View
             builder.RegisterInstance<MainButtonView>(mainButtonView);
             builder.RegisterInstance<TweetButtonView>(tweetButtonView);
-            builder.RegisterInstance<FloorItemView>(floorItemView);
+            builder.RegisterInstance<AccountDeleteView>(accountDeleteView);
             builder.RegisterInstance<CoinView>(coinView);
+            builder.RegisterInstance<FloorItemView>(floorItemView);
             builder.RegisterInstance<HpView>(hpView);
             builder.RegisterInstance<PlayerView>(playerView);
             builder.RegisterInstance<RankingView>(rankingView);
