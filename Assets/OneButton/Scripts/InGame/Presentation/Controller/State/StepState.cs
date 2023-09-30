@@ -47,7 +47,7 @@ namespace OneButton.InGame.Presentation.Controller
             _stepCountUseCase.Increment();
 
             // 次フロアの階段位置抽選
-            _stepView.LotNextPosition();
+            _stepView.LotNextPosition(_playerView);
 
             // 次フロア内のアイテム抽選
             // 階段位置とは被らないようにする
