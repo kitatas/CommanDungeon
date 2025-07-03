@@ -20,7 +20,7 @@ namespace OneButton.InGame.Presentation.Presenter
 
         public void Initialize()
         {
-            foreach (var buttonView in Object.FindObjectsOfType<BaseButtonView>())
+            foreach (var buttonView in Object.FindObjectsByType<BaseButtonView>(FindObjectsSortMode.None))
             {
                 buttonView.Init(x => _soundUseCase.PlaySe(x));
             }
