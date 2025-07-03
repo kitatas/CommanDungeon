@@ -18,22 +18,26 @@ namespace OneButton.InGame.Presentation.View
 
         public async UniTask ShowAsync(float duration, CancellationToken token)
         {
-            buttonText
-                .DOFade(1.0f, duration)
-                .SetEase(Ease.Linear)
-                .SetLink(gameObject);
-
-            await Show(duration).WithCancellation(token);
+            await (
+                FadeButtonText(1.0f, duration).WithCancellation(token),
+                Show(duration).WithCancellation(token)
+            );
         }
 
         public async UniTask HideAsync(float duration, CancellationToken token)
         {
-            buttonText
-                .DOFade(0.0f, duration)
+            await (
+                FadeButtonText(0.0f, duration).WithCancellation(token),
+                Hide(duration).WithCancellation(token)
+            );
+        }
+
+        private Tween FadeButtonText(float endValue, float duration)
+        {
+            return buttonText
+                .DOFade(endValue, duration)
                 .SetEase(Ease.Linear)
                 .SetLink(gameObject);
-
-            await Hide(duration).WithCancellation(token);
         }
 
         public void SetUp(RankingType type, int stepCount, int score)
