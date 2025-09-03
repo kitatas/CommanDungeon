@@ -1,10 +1,10 @@
 # CommanDungeon
 Developed at unity1week "1ボタン"
 * [unityroom](https://unityroom.com/games/commandungeon) (ver 1.0)
-* [GooglePlay](https://play.google.com/store/apps/details?id=com.KitaLab.CommanDungeon)  (ver 1.2)
+* [GooglePlay](https://play.google.com/store/apps/details?id=com.KitaLab.CommanDungeon)  (ver 1.3)
 
 ## Unity version
-* 6000.0.34f1
+* 6000.0.56f1
 
 ## Usages Assets
 

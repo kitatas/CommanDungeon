@@ -3,7 +3,7 @@ namespace OneButton.Common
     public sealed class AppConfig
     {
         public const int MAJOR_VERSION = 1;
-        public const int MINOR_VERSION = 2;
+        public const int MINOR_VERSION = 3;
         public static readonly string APP_VERSION = $"{MAJOR_VERSION.ToString()}.{MINOR_VERSION.ToString()}";
     }
 
